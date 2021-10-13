@@ -1466,7 +1466,8 @@ public class TestCaseService {
         if (CollectionUtils.isNotEmpty(ids)) {
             TestCaseBatchRequest deleteRequest = new TestCaseBatchRequest();
             deleteRequest.setIds(ids);
-            deleteTestCaseBath(deleteRequest);
+//            deleteTestCaseBath(deleteRequest);
+            deleteToGcBatch(deleteRequest);
         }
     }
 
@@ -1511,7 +1512,13 @@ public class TestCaseService {
     }
 
     public List<TestCaseWithBLOBs> listTestCaseForMinder(QueryTestCaseRequest request) {
-        setDefaultOrder(request);
+        // 设置思维导图中用例的排序顺序
+        List<OrderRequest> orderList = new ArrayList<>();
+        OrderRequest orderRequest = new OrderRequest();
+        orderRequest.setName("create_time");
+        orderRequest.setType("asc");
+        orderList.add(orderRequest);
+        request.setOrders(orderList);
         return extTestCaseMapper.listForMinder(request);
     }
 

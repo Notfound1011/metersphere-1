@@ -57,7 +57,7 @@ export default {
     operating: '操作',
     input_limit: '长度在 {0} 到 {1} 个字符',
     login: '登录',
-    welcome: '一站式开源持续测试平台',
+    welcome: 'Phemex持续测试平台',
     username: '姓名',
     password: '密码',
     input_username: '请输入用户姓名',
